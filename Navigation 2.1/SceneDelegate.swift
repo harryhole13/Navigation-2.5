@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let myWindowScene = (scene as? UIWindowScene) else { return }
         
-        let navigationBarAppearance = UINavigationBarAppearance() // 
+        let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.backgroundColor = .white
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
@@ -34,8 +34,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBar.tabBar.backgroundColor = .white
         feed.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house.fill"), tag: 0)
         profile.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 1)
-        
-        
         
         window = UIWindow(windowScene: myWindowScene)
         window?.rootViewController = tabBar

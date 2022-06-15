@@ -7,9 +7,6 @@
 
 import UIKit
 
-
-
-
 final class ProfileViewController: UIViewController {
     
     private lazy var profileView: ProfileHeaderView = {
@@ -19,16 +16,14 @@ final class ProfileViewController: UIViewController {
         return profileView
     }()
     
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         title = "Profile"
         navigationController?.navigationBar.backgroundColor = UIColor.darkGray
         navigationController?.navigationBar.isTranslucent = true
-        
     }
+    
     override func viewWillLayoutSubviews(){
         super.viewWillLayoutSubviews()
         self.view.addSubview(profileView)

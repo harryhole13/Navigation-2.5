@@ -9,7 +9,6 @@ import UIKit
 
 final class ProfileHeaderView: UIView {
 
-
     private lazy var profileView: ProfileHeaderView = {
         let profileView = ProfileHeaderView()
         return profileView        
@@ -27,7 +26,7 @@ final class ProfileHeaderView: UIView {
         button.layer.shadowRadius = 4
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
-        button.addTarget(ProfileHeaderView.self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.backgroundColor = UIColor.blue
         return button
     }()
@@ -51,26 +50,30 @@ final class ProfileHeaderView: UIView {
         return stack
     }()
     
-//    private lazy var setStatus: UITextField = {
-//        let setStatus = UITextField()
-//
-//
-//        return setStatus
-//    }()
-//    private var statusText: String?
-//
+    private lazy var setStatus: UITextField = {   //дополнительное задание со звездой
+        let setStatus = UITextField()
+        setStatus.translatesAutoresizingMaskIntoConstraints = false
+        setStatus.backgroundColor = .white
+        setStatus.clipsToBounds = true
+        setStatus.layer.cornerRadius = 12
+        setStatus.layer.borderWidth = 1
+        setStatus.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
+        setStatus.font = .systemFont(ofSize: 15, weight: .regular)
+        setStatus.textColor = .black
+        setStatus.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        return setStatus
+    }()
     
-    
-    
+    private var statusText = "Inhuman fucking monster"
+        
     private lazy var titleStatus: UILabel = {
-        let title = UILabel()
-        title.text = "Inhuman fucking monster"
+        var title = UILabel()
+        title.text = statusText
         //title.textAlignment = .center
         title.textColor = UIColor.gray
         title.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return title
     }()
-    
 
     private lazy var avatarView: UIImageView = {
         let picture = UIImage(named: "homelander")
@@ -97,8 +100,28 @@ final class ProfileHeaderView: UIView {
         self.avatarView.layer.cornerRadius = self.avatarView.frame.height / 2
     }
     
-    @objc private func buttonPressed(){
-        print(titleStatus.text ?? "Status is empty")
+    @objc private func buttonPressed() {
+        titleStatus.text = statusText
+        self.animateButton(view: buttonStatus)
+    }
+    
+    private func animateButton(view viewToAnimate: UIView) {
+        
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+            viewToAnimate.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+        }) { _ in
+            
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 2, options: .curveEaseIn, animations: {
+            viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
+        }
+    }
+    
+
+    
+    @objc func statusTextChanged() {
+        statusText = setStatus.text ?? ""
+        print(statusText)
     }
     
     private func setupView(){
@@ -106,36 +129,32 @@ final class ProfileHeaderView: UIView {
         self.addSubview(avatarView)
         self.addSubview(stackNameWithStatus)
         self.addSubview(buttonStatus)
-    //    self.addSubview(setStatus)
+        self.addSubview(setStatus)
         self.stackNameWithStatus.addArrangedSubview(titleName)
         self.stackNameWithStatus.addArrangedSubview(titleStatus)
 
         NSLayoutConstraint.activate([
             self.avatarView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             self.avatarView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            self.avatarView.widthAnchor.constraint(equalToConstant: 130) ,
-            self.avatarView.heightAnchor.constraint(equalToConstant: 130),
-            
-            self.buttonStatus.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 16),
-            self.buttonStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            self.buttonStatus.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            self.buttonStatus.heightAnchor.constraint(equalToConstant: 50),
-            
-//            self.setStatus.topAnchor.constraint(equalTo: stackNameWithStatus.bottomAnchor),
-//            self.setStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-//            self.setStatus.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-//            self.setStatus.heightAnchor.constraint(equalToConstant: 50),
+            self.avatarView.widthAnchor.constraint(equalToConstant: 150) ,
+            self.avatarView.heightAnchor.constraint(equalToConstant: 150),
             
             self.stackNameWithStatus.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
             self.stackNameWithStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.stackNameWithStatus.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 15),
-            self.stackNameWithStatus.bottomAnchor.constraint(equalTo: buttonStatus.topAnchor, constant: -34),
+            self.stackNameWithStatus.bottomAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: -20),
             
-
+            self.setStatus.topAnchor.constraint(equalTo: stackNameWithStatus.bottomAnchor),
+            self.setStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            self.setStatus.leadingAnchor.constraint(equalTo: self.stackNameWithStatus.leadingAnchor),
+            self.setStatus.heightAnchor.constraint(equalToConstant: 40),
+            
+            self.buttonStatus.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 30),
+            self.buttonStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            self.buttonStatus.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            self.buttonStatus.heightAnchor.constraint(equalToConstant: 50),
         ])
-        
-        
-        
     }
-
 }
+
+
