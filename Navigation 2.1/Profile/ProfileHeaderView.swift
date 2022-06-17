@@ -9,10 +9,11 @@ import UIKit
 
 final class ProfileHeaderView: UIView {
 
-    private lazy var profileView: ProfileHeaderView = {
-        let profileView = ProfileHeaderView()
-        return profileView        
-    }()
+//    private lazy var profileView: ProfileHeaderView = {
+//        let profileView = ProfileHeaderView()
+//        return profileView
+//    }()
+    private var rectangle = 100   //размер авы
     
     private lazy var buttonStatus: UIButton = {
         let button = UIButton()
@@ -30,6 +31,7 @@ final class ProfileHeaderView: UIView {
         button.backgroundColor = UIColor.blue
         return button
     }()
+    
     
     private lazy var titleName: UILabel = {
         let title = UILabel()
@@ -75,7 +77,7 @@ final class ProfileHeaderView: UIView {
         return title
     }()
 
-    private lazy var avatarView: UIImageView = {
+    private lazy var avatarImageView: UIImageView = {
         let picture = UIImage(named: "homelander")
         let avatarView = UIImageView(image: UIImage(named: "Homelander"))
         avatarView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,6 +85,7 @@ final class ProfileHeaderView: UIView {
         avatarView.layer.borderColor = .init(red: 255, green: 255, blue: 255, alpha: 1)
         avatarView.layer.borderWidth = 3
         avatarView.contentMode = .scaleAspectFill
+        avatarView.layer.cornerRadius = CGFloat(rectangle) / 2
         //avatarView.backgroundColor = .red
         return avatarView
     }()
@@ -95,10 +98,10 @@ final class ProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.avatarView.layer.cornerRadius = self.avatarView.frame.height / 2
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.height / 2   //  не понимаю почему не работает данная запись  если ее прописать в переменной
+//    }
     
     @objc private func buttonPressed() {
         titleStatus.text = statusText
@@ -126,7 +129,7 @@ final class ProfileHeaderView: UIView {
     
     private func setupView(){
         self.backgroundColor = .lightGray
-        self.addSubview(avatarView)
+        self.addSubview(avatarImageView)
         self.addSubview(stackNameWithStatus)
         self.addSubview(buttonStatus)
         self.addSubview(setStatus)
@@ -134,25 +137,26 @@ final class ProfileHeaderView: UIView {
         self.stackNameWithStatus.addArrangedSubview(titleStatus)
 
         NSLayoutConstraint.activate([
-            self.avatarView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            self.avatarView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            self.avatarView.widthAnchor.constraint(equalToConstant: 150) ,
-            self.avatarView.heightAnchor.constraint(equalToConstant: 150),
+            self.avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            self.avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            self.avatarImageView.widthAnchor.constraint(equalToConstant: CGFloat(rectangle)) ,
+            self.avatarImageView.heightAnchor.constraint(equalToConstant: CGFloat(rectangle)),
             
             self.stackNameWithStatus.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
             self.stackNameWithStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            self.stackNameWithStatus.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 15),
-            self.stackNameWithStatus.bottomAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: -20),
+            self.stackNameWithStatus.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 15),
+            self.stackNameWithStatus.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -20),
             
             self.setStatus.topAnchor.constraint(equalTo: stackNameWithStatus.bottomAnchor),
             self.setStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.setStatus.leadingAnchor.constraint(equalTo: self.stackNameWithStatus.leadingAnchor),
             self.setStatus.heightAnchor.constraint(equalToConstant: 40),
             
-            self.buttonStatus.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 30),
+            self.buttonStatus.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 30),
             self.buttonStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.buttonStatus.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.buttonStatus.heightAnchor.constraint(equalToConstant: 50),
+            
         ])
     }
 }
