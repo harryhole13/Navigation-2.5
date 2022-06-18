@@ -13,6 +13,7 @@
 		872049032856425E0034182A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 872049012856425E0034182A /* LaunchScreen.storyboard */; };
 		8720490C285644860034182A /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8720490B285644860034182A /* ProfileHeaderView.swift */; };
 		8720490E2856451B0034182A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8720490D2856451B0034182A /* ProfileViewController.swift */; };
+		87AF8125285DC48D0069056C /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AF8124285DC48D0069056C /* PostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		872049042856425E0034182A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8720490B285644860034182A /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		8720490D2856451B0034182A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		87AF8124285DC48D0069056C /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				8720490B285644860034182A /* ProfileHeaderView.swift */,
+				87AF8124285DC48D0069056C /* PostViewController.swift */,
 				8720490D2856451B0034182A /* ProfileViewController.swift */,
 			);
 			path = Profile;
@@ -149,6 +152,7 @@
 				8720490E2856451B0034182A /* ProfileViewController.swift in Sources */,
 				872048F92856425B0034182A /* SceneDelegate.swift in Sources */,
 				8720490C285644860034182A /* ProfileHeaderView.swift in Sources */,
+				87AF8125285DC48D0069056C /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
