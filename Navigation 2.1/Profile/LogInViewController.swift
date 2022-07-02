@@ -26,8 +26,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         return logo
     }()
     
-    
-    
     private lazy var logInButton: UIButton = {
         let image = UIImage(named: "blue_pixel")
         let button = UIButton()
@@ -38,7 +36,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         button.setBackgroundImage(image, for: .normal)
         button.clipsToBounds = true
         button.addTarget(self, action: #selector(logIn), for: .touchUpInside)
-        
         return button
     }()
     
