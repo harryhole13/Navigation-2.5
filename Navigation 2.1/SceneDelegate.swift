@@ -21,11 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         
         let tabBar = UITabBarController()
-        let feed = UIViewController()
-        //feed.viewDidLoad()
-        feed.view.backgroundColor = .green
-        
-        let profile = UINavigationController(rootViewController: ProfileViewController())
+        let feed = FeedViewController()
+        let profile = UINavigationController(rootViewController: LogInViewController())
         
         tabBar.setViewControllers([
         feed,
@@ -39,6 +36,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }
-
+    
 }
 

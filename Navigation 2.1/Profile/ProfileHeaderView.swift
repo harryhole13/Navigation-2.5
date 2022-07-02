@@ -9,25 +9,19 @@ import UIKit
 
 final class ProfileHeaderView: UIView {
 
-//    private lazy var profileView: ProfileHeaderView = {
-//        let profileView = ProfileHeaderView()
-//        return profileView
-//    }()
     private var rectangle = 100   //размер авы
     
     private lazy var buttonStatus: UIButton = {
         let button = UIButton()
-        //button.clipsToBounds = false
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Show status", for: .normal)
-        //button.titleLabel?.textColor = UIColor.black  // why not working ((((
+        button.setTitle("Install status", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 12
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.shadowRadius = 4
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pressButton), for: .touchUpInside)
         button.backgroundColor = UIColor.blue
         return button
     }()
@@ -36,7 +30,6 @@ final class ProfileHeaderView: UIView {
     private lazy var titleName: UILabel = {
         let title = UILabel()
         title.text = "Homelander"
-        //title.textAlignment = .center
         title.textColor = UIColor.black
         title.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         return title
@@ -52,9 +45,11 @@ final class ProfileHeaderView: UIView {
         return stack
     }()
     
-    private lazy var setStatus: UITextField = {   //дополнительное задание со звездой
+    private lazy var setStatus: UITextField = {
         let setStatus = UITextField()
         setStatus.translatesAutoresizingMaskIntoConstraints = false
+        setStatus.placeholder =  "Write your status"
+        setStatus.clearButtonMode = .whileEditing
         setStatus.backgroundColor = .white
         setStatus.clipsToBounds = true
         setStatus.layer.cornerRadius = 12
@@ -62,16 +57,14 @@ final class ProfileHeaderView: UIView {
         setStatus.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1)
         setStatus.font = .systemFont(ofSize: 15, weight: .regular)
         setStatus.textColor = .black
-        setStatus.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return setStatus
     }()
     
-    private var statusText = "Inhuman fucking monster"
-        
+    private var statusText = "Inhuman fucking monster" //первичный статус
+            
     private lazy var titleStatus: UILabel = {
         var title = UILabel()
         title.text = statusText
-        //title.textAlignment = .center
         title.textColor = UIColor.gray
         title.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return title
@@ -86,7 +79,6 @@ final class ProfileHeaderView: UIView {
         avatarView.layer.borderWidth = 3
         avatarView.contentMode = .scaleAspectFill
         avatarView.layer.cornerRadius = CGFloat(rectangle) / 2
-        //avatarView.backgroundColor = .red
         return avatarView
     }()
     
@@ -98,14 +90,14 @@ final class ProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.height / 2   //  не понимаю почему не работает данная запись  если ее прописать в переменной
-//    }
     
-    @objc private func buttonPressed() {
-        titleStatus.text = statusText
+    @objc private func pressButton() {
+        if setStatus.text?.isEmpty == true {
+            self.titleStatus.text = "No status"
+        } else {
+        self.titleStatus.text = setStatus.text
         self.animateButton(view: buttonStatus)
+        }
     }
     
     private func animateButton(view viewToAnimate: UIView) {
@@ -118,13 +110,6 @@ final class ProfileHeaderView: UIView {
             viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
             }, completion: nil)
         }
-    }
-    
-
-    
-    @objc func statusTextChanged() {
-        statusText = setStatus.text ?? ""
-        print(statusText)
     }
     
     private func setupView(){

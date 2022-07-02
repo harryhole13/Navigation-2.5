@@ -14,6 +14,8 @@
 		8720490C285644860034182A /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8720490B285644860034182A /* ProfileHeaderView.swift */; };
 		8720490E2856451B0034182A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8720490D2856451B0034182A /* ProfileViewController.swift */; };
 		87AF8125285DC48D0069056C /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AF8124285DC48D0069056C /* PostViewController.swift */; };
+		87CCDD74286762130057577D /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CCDD73286762130057577D /* LogInViewController.swift */; };
+		87CCDD77286763EF0057577D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CCDD76286763EF0057577D /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		8720490B285644860034182A /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		8720490D2856451B0034182A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		87AF8124285DC48D0069056C /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		87CCDD73286762130057577D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		87CCDD76286763EF0057577D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 		872048F52856425B0034182A /* Navigation 2.1 */ = {
 			isa = PBXGroup;
 			children = (
+				87CCDD78286764A60057577D /* Post */,
+				87CCDD75286763880057577D /* Feed */,
 				8720490A285644410034182A /* Profile */,
 				872048F62856425B0034182A /* AppDelegate.swift */,
 				872048F82856425B0034182A /* SceneDelegate.swift */,
@@ -72,10 +78,26 @@
 			isa = PBXGroup;
 			children = (
 				8720490B285644860034182A /* ProfileHeaderView.swift */,
-				87AF8124285DC48D0069056C /* PostViewController.swift */,
 				8720490D2856451B0034182A /* ProfileViewController.swift */,
+				87CCDD73286762130057577D /* LogInViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		87CCDD75286763880057577D /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				87CCDD76286763EF0057577D /* FeedViewController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		87CCDD78286764A60057577D /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				87AF8124285DC48D0069056C /* PostViewController.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,9 +172,11 @@
 			files = (
 				872048F72856425B0034182A /* AppDelegate.swift in Sources */,
 				8720490E2856451B0034182A /* ProfileViewController.swift in Sources */,
+				87CCDD74286762130057577D /* LogInViewController.swift in Sources */,
 				872048F92856425B0034182A /* SceneDelegate.swift in Sources */,
 				8720490C285644860034182A /* ProfileHeaderView.swift in Sources */,
 				87AF8125285DC48D0069056C /* PostViewController.swift in Sources */,
+				87CCDD77286763EF0057577D /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +198,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -234,6 +259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
