@@ -29,7 +29,7 @@
 		8720490D2856451B0034182A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		87AF8124285DC48D0069056C /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		87CCDD73286762130057577D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		87D4262B2870F5040096C7D7 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = "Navigation 2.1/FeedViewController.swift"; sourceTree = SOURCE_ROOT; };
+		87D4262B2870F5040096C7D7 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = "Navigation 2.1/Feed/FeedViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +62,8 @@
 		872048F52856425B0034182A /* Navigation 2.1 */ = {
 			isa = PBXGroup;
 			children = (
+				87B266412872227C00F46E91 /* Feed */,
 				87CCDD78286764A60057577D /* Post */,
-				87CCDD75286763880057577D /* Feed */,
 				8720490A285644410034182A /* Profile */,
 				872048F62856425B0034182A /* AppDelegate.swift */,
 				872048F82856425B0034182A /* SceneDelegate.swift */,
@@ -84,7 +84,7 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		87CCDD75286763880057577D /* Feed */ = {
+		87B266412872227C00F46E91 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
 				87D4262B2870F5040096C7D7 /* FeedViewController.swift */,
