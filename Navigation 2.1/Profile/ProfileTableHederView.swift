@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProfileHeaderView: UIView {
+final class ProfileHeaderView: UITableViewHeaderFooterView {
 
     private var rectangle = 100   //размер авы
     
@@ -38,7 +38,7 @@ final class ProfileHeaderView: UIView {
     private lazy var stackNameWithStatus: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.backgroundColor = .lightGray
+        //stack.backgroundColor = .gree
         stack.spacing = 6
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillEqually
@@ -82,11 +82,12 @@ final class ProfileHeaderView: UIView {
         return avatarView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier : String?) {
+        
+        super.init(reuseIdentifier: reuseIdentifier)
         self.setupView()
     }
-    
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -106,14 +107,14 @@ final class ProfileHeaderView: UIView {
             viewToAnimate.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
         }) { _ in
             
-            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 2, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 2, options: .curveEaseIn, animations: {
             viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
             }, completion: nil)
         }
     }
     
     private func setupView(){
-        self.backgroundColor = .lightGray
+        self.backgroundColor = .yellow
         self.addSubview(avatarImageView)
         self.addSubview(stackNameWithStatus)
         self.addSubview(buttonStatus)
@@ -145,5 +146,7 @@ final class ProfileHeaderView: UIView {
         ])
     }
 }
+
+
 
 
