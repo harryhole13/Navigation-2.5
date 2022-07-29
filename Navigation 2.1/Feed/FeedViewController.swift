@@ -36,6 +36,7 @@ class FeedViewController: UIViewController {
     }()
     
     @objc private func showPostModal() {
+        //navigationController?.pushViewController(CollectionView(), animated: true)
         present(PostViewController(), animated: true, completion: nil)
     }
 

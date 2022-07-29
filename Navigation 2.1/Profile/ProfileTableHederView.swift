@@ -38,7 +38,6 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
     private lazy var stackNameWithStatus: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        //stack.backgroundColor = .gree
         stack.spacing = 6
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fillEqually
@@ -142,6 +141,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
             self.buttonStatus.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.buttonStatus.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.buttonStatus.heightAnchor.constraint(equalToConstant: 50),
+            self.buttonStatus.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
             
         ])
     }

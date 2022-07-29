@@ -15,6 +15,10 @@ struct Post {
     let views: Int
 }
 
+struct ModelCollection {
+        let image: String
+}
+
 
 
    
