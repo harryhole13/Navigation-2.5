@@ -7,15 +7,8 @@
 
 import UIKit
 
-//protocol ModelProtocol {}
-//
-//protocol SetupCollection: AnyObject {
-//    func setup (with photo: ModelProtocol)
-//}
-
 class PhotosTableViewCell: UICollectionViewCell {
     
- 
     private lazy var photoView:UIImageView = {
         
         let image = UIImageView(image: UIImage())

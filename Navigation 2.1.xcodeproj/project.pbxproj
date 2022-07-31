@@ -37,7 +37,7 @@
 		872750C9288C837B00B1AA5F /* DataBasePhotosCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBasePhotosCollection.swift; sourceTree = "<group>"; };
 		872750CB288DAD6C00B1AA5F /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		877147AB2875EF1500644E93 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
-		877147AD28762EFE00644E93 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = "Navigation 2.1/Post/Post.swift"; sourceTree = SOURCE_ROOT; };
+		877147AD28762EFE00644E93 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = "Navigation 2.1/StructModel/Post.swift"; sourceTree = SOURCE_ROOT; };
 		877147AF2877662000644E93 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		87AF8124285DC48D0069056C /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		87CCDD73286762130057577D /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -74,10 +74,10 @@
 		872048F52856425B0034182A /* Navigation 2.1 */ = {
 			isa = PBXGroup;
 			children = (
-				872750C62887510900B1AA5F /* CollectionPhotos */,
-				87B266412872227C00F46E91 /* Feed */,
-				87CCDD78286764A60057577D /* Post */,
-				8720490A285644410034182A /* Profile */,
+				87DA4AF22896A7E600735E9F /* VC */,
+				87DA4AF12896A77800735E9F /* StructModel */,
+				87DA4AF02896A75D00735E9F /* Data */,
+				872750C62887510900B1AA5F /* Cell */,
 				872048F62856425B0034182A /* AppDelegate.swift */,
 				872048F82856425B0034182A /* SceneDelegate.swift */,
 				872048FF2856425E0034182A /* Assets.xcassets */,
@@ -90,22 +90,21 @@
 		8720490A285644410034182A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				8720490B285644860034182A /* ProfileTableHederView.swift */,
-				877147AB2875EF1500644E93 /* PostTableViewCell.swift */,
 				8720490D2856451B0034182A /* ProfileViewController.swift */,
 				87CCDD73286762130057577D /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		872750C62887510900B1AA5F /* CollectionPhotos */ = {
+		872750C62887510900B1AA5F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				872750C7288C6B9C00B1AA5F /* PhotosTableViewCell.swift */,
-				872750C9288C837B00B1AA5F /* DataBasePhotosCollection.swift */,
+				8720490B285644860034182A /* ProfileTableHederView.swift */,
+				877147AB2875EF1500644E93 /* PostTableViewCell.swift */,
 				872750CB288DAD6C00B1AA5F /* CollectionView.swift */,
+				872750C7288C6B9C00B1AA5F /* PhotosTableViewCell.swift */,
 			);
-			path = CollectionPhotos;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		87B266412872227C00F46E91 /* Feed */ = {
@@ -120,10 +119,35 @@
 			isa = PBXGroup;
 			children = (
 				87AF8124285DC48D0069056C /* PostViewController.swift */,
-				877147AD28762EFE00644E93 /* Post.swift */,
-				877147AF2877662000644E93 /* DataBase.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		87DA4AF02896A75D00735E9F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				877147AF2877662000644E93 /* DataBase.swift */,
+				872750C9288C837B00B1AA5F /* DataBasePhotosCollection.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		87DA4AF12896A77800735E9F /* StructModel */ = {
+			isa = PBXGroup;
+			children = (
+				877147AD28762EFE00644E93 /* Post.swift */,
+			);
+			path = StructModel;
+			sourceTree = "<group>";
+		};
+		87DA4AF22896A7E600735E9F /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				87B266412872227C00F46E91 /* Feed */,
+				8720490A285644410034182A /* Profile */,
+				87CCDD78286764A60057577D /* Post */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
