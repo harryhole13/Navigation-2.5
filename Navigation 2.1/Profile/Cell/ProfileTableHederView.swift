@@ -26,7 +26,6 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         return button
     }()
     
-    
     private lazy var titleName: UILabel = {
         let title = UILabel()
         title.text = "Homelander"
@@ -82,7 +81,6 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
     }()
     
     override init(reuseIdentifier : String?) {
-        
         super.init(reuseIdentifier: reuseIdentifier)
         self.setupView()
     }
@@ -101,7 +99,6 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
     }
     
     private func animateButton(view viewToAnimate: UIView) {
-        
         UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
             viewToAnimate.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
         }) { _ in
@@ -142,7 +139,6 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
             self.buttonStatus.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.buttonStatus.heightAnchor.constraint(equalToConstant: 50),
             self.buttonStatus.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16)
-            
         ])
     }
 }

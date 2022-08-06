@@ -25,7 +25,6 @@ class PostTableViewCell: UITableViewCell {
         return name
     }()
     
-    
     private lazy var postImage:UIImageView =  {
         
         let image = UIImageView(image: UIImage())
@@ -89,7 +88,6 @@ class PostTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
     }
     
     private func setupView() {
@@ -120,9 +118,7 @@ class PostTableViewCell: UITableViewCell {
             self.stackLikesAndViews.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             self.stackLikesAndViews.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.stackLikesAndViews.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
-            
         ])
-        
     }
     
     func setup(with post: Post) {
@@ -131,7 +127,5 @@ class PostTableViewCell: UITableViewCell {
         self.descriptionPost.text = post.description
         self.numberLikes.text = "Likes: " + String(post.likes)
         self.numberViews.text = "Views: " + String(post.views)
-        
     }
-
 }

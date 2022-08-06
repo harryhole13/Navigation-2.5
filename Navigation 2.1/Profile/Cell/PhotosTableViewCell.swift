@@ -15,7 +15,6 @@ class PhotosTableViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.backgroundColor = .black
         image.clipsToBounds = true
-        image.layer.cornerRadius = 6
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -30,8 +29,6 @@ class PhotosTableViewCell: UICollectionViewCell {
             self.photoView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.photoView.leadingAnchor.constraint(equalTo: self.leadingAnchor)
         ])
-        
-        
     }
     
     required init?(coder: NSCoder) {
@@ -45,5 +42,4 @@ class PhotosTableViewCell: UICollectionViewCell {
     func setup(with photo: ModelCollection) {
         self.photoView.image = UIImage(named: photo.image)
         }
-    
 }

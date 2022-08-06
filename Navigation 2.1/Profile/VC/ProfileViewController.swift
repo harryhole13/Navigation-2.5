@@ -9,7 +9,7 @@ import UIKit
 
 
 final class ProfileViewController: UIViewController {
-    
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.dataSource = self
@@ -21,15 +21,25 @@ final class ProfileViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .lightGray
-        
         return tableView
     }()
 
-    private var postsArray: [Post] = []
+    private lazy var postsArray: [Post] = []
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
+        self.navigationController?.isNavigationBarHidden = false
         
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -38,16 +48,7 @@ final class ProfileViewController: UIViewController {
             self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
         ])
         self.postsArray = dataBase
-//        self.tableView.reloadData()
     }
-    
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        tableView.layoutIfNeeded()
-//        PostTableViewCell().layoutIfNeeded()
-//        CollectionView().layoutIfNeeded()
-//    }
-    
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -63,15 +64,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return  2
     }
-
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        UITableView.automaticDimension
-//            }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionFeed", for: indexPath) as? CollectionView else { return UITableViewCell() }
+            cell.imageArrowButton.tag = indexPath.row
+            cell.imageArrowButton .addTarget(self, action: #selector(showCollection), for: .touchUpInside)
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "Custom Cell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
@@ -79,6 +78,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             cell.setup(with: post)
             return cell
         }
+        
+    }
+    
+    @objc private func showCollection() {
+        navigationController?.pushViewController(PhotosViewController(), animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -93,10 +97,5 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableView.automaticDimension
         }
         return 0.0
-       
     }
-    
-
-
-    
 }

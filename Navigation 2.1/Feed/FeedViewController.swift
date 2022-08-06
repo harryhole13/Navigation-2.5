@@ -36,7 +36,7 @@ class FeedViewController: UIViewController {
     }()
     
     @objc private func showPostModal() {
-        //navigationController?.pushViewController(CollectionView(), animated: true)
+        //navigationController?.pushViewController(PostViewController(), animated: true)
         present(PostViewController(), animated: true, completion: nil)
     }
 
@@ -53,7 +53,5 @@ class FeedViewController: UIViewController {
             self.stackButton.heightAnchor.constraint(equalToConstant: 100),
             self.stackButton.widthAnchor.constraint(equalToConstant: 200),
         ])
-
     }
-
 }

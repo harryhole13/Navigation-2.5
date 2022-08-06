@@ -15,7 +15,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         scrollView.backgroundColor = .white
         scrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 706)
         return scrollView
-        
     }()
     
     private lazy  var logoImage: UIImageView = {
@@ -99,14 +98,13 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         stack.distribution = .fillEqually
         stack.layer.cornerRadius = 10
         stack.clipsToBounds = true
-        
         return stack
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
         self.view.addSubview(scrollViewLogIn)
         self.scrollViewLogIn.addSubview(stackView)
         self.scrollViewLogIn.addSubview(logoImage)
@@ -114,7 +112,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.stackView.addArrangedSubview(enterEmail)
         self.stackView.addArrangedSubview(enterPassword)
         self.setupGestures()
-        
         
         NSLayoutConstraint.activate([
             self.scrollViewLogIn.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -136,7 +133,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             self.stackView.trailingAnchor.constraint(equalTo: self.scrollViewLogIn.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             self.stackView.heightAnchor.constraint(equalToConstant: 100),
             self.stackView.topAnchor.constraint(equalTo: self.logoImage.bottomAnchor, constant: 120),
-            
         ])
     }
     
@@ -144,6 +140,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let anyTap = UITapGestureRecognizer(target: self, action: #selector(forceHidingKeyaboard))
         self.view.addGestureRecognizer(anyTap)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self,
@@ -155,6 +152,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                                                name: UIResponder.keyboardDidHideNotification,
                                                object: nil)
     }
+    
     @objc private func showKeyboard(_ notification: Notification) {
         if let keyboardFrame:NSValue =
             notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -164,16 +162,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             let isScrollMoveY = highestPointKeyboardY < lowestPointButtonY
             ? lowestPointButtonY - highestPointKeyboardY : 0
             self.scrollViewLogIn.contentOffset = CGPoint(x: 0, y: isScrollMoveY)
-            
         }
-        
     }
+    
     @objc private func hideKeyboard(_ notification: Notification) {
         self.forceHidingKeyaboard()
     }
+    
     @objc private func forceHidingKeyaboard(){
         self.view.endEditing(true)
         self.scrollViewLogIn.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
-
 }
