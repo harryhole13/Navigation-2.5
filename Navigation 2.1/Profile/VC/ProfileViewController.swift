@@ -49,6 +49,7 @@ final class ProfileViewController: UIViewController {
         ])
         self.postsArray = dataBase
     }
+    
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
