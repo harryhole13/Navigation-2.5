@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 final class ProfileViewController: UIViewController {
 
     private lazy var tableView: UITableView = {
@@ -26,6 +25,25 @@ final class ProfileViewController: UIViewController {
 
     private lazy var postsArray: [Post] = []
     
+    private lazy var ava = ProfileHeaderView()
+    
+    private lazy var theCross: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
+        button.tintColor = .red
+        button.layer.opacity = 0
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.clipsToBounds = true
+        return button
+    }()
+    
+    private var fullScreenView: UIView = {
+        let fullScreen = UIView()
+        fullScreen.backgroundColor = .black
+        fullScreen.translatesAutoresizingMaskIntoConstraints = false
+        return fullScreen
+    }()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -39,16 +57,25 @@ final class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
+        self.view.addSubview(fullScreenView)
+        self.fullScreenView.addSubview(theCross)
         self.navigationController?.isNavigationBarHidden = false
+      
         
         NSLayoutConstraint.activate([
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            
+            self.theCross.topAnchor.constraint(equalTo: self.fullScreenView.topAnchor, constant: 30),
+            self.theCross.heightAnchor.constraint(equalToConstant: 30),
+            self.theCross.trailingAnchor.constraint(equalTo: self.fullScreenView.trailingAnchor, constant: 30),
+            self.theCross.widthAnchor.constraint(equalToConstant: 30),
         ])
         self.postsArray = dataBase
     }
+    
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -87,9 +114,34 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
-            return tableView.dequeueReusableHeaderFooterView(withIdentifier: "0 Section")
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "0 Section") as? ProfileHeaderView else { return UITableViewHeaderFooterView() }
+            
+            let tapGesture = UITapGestureRecognizer()
+            tapGesture.addTarget(self, action: #selector(tapAction))
+            header.avatarImageView.isUserInteractionEnabled = true
+            header.avatarImageView.addGestureRecognizer(tapGesture)
+        
+            return header
         }
         return nil
+    }
+    
+    @objc func tapAction() {
+        print("click ava")
+        UIView.animate(withDuration: 3,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: 1,
+                       options: .curveLinear,
+                       animations: {
+            
+            self.fullScreenView.layer.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            self.fullScreenView.layer.opacity = 0
+        },
+                       completion: {_ in
+            self.ava.zoomAva()
+        }
+                       )
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

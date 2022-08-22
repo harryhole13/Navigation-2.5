@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProfileHeaderView: UITableViewHeaderFooterView {
+ class ProfileHeaderView: UITableViewHeaderFooterView {
 
     private var rectangle = 100   //размер авы
     
@@ -57,7 +57,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         setStatus.textColor = .black
         return setStatus
     }()
-    
+
     private var statusText = "Inhuman fucking monster" //первичный статус
             
     private lazy var titleStatus: UILabel = {
@@ -68,7 +68,7 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         return title
     }()
 
-    private lazy var avatarImageView: UIImageView = {
+    lazy var avatarImageView: UIImageView = {
         let picture = UIImage(named: "homelander")
         let avatarView = UIImageView(image: UIImage(named: "Homelander"))
         avatarView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +79,19 @@ final class ProfileHeaderView: UITableViewHeaderFooterView {
         avatarView.layer.cornerRadius = CGFloat(rectangle) / 2
         return avatarView
     }()
+     
+     func zoomAva() {
+         print("tap zoom ava")
+         UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            options: .curveEaseIn,
+            animations: {
+                self.avatarImageView.center = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midX)
+            }
+         )
+     }
+
     
     override init(reuseIdentifier : String?) {
         super.init(reuseIdentifier: reuseIdentifier)

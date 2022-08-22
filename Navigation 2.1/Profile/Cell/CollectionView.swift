@@ -63,11 +63,10 @@ class CollectionView: UITableViewCell {
         self.stackView.addArrangedSubview(labelPhoto)
         self.stackView.addArrangedSubview(imageArrowButton)
         
-                let screenSize01 = UIScreen.main.bounds
-                let screenWidth01 = screenSize01.width
+                let screenWidth = UIScreen.main.bounds.width
                 let spacing = (coollectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.minimumInteritemSpacing ?? 0
                 let insets = (coollectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.sectionInset ?? .zero
-                let neededWidth = screenWidth01 - (Constant.numberOfItems - 1) * spacing - insets.right - insets.left
+                let neededWidth = screenWidth - (Constant.numberOfItems - 1) * spacing - insets.right - insets.left
                 let itemWidth = floor(neededWidth / Constant.numberOfItems)
                 let collectionNeededHeight = itemWidth + insets.bottom + insets.top
 
@@ -99,6 +98,7 @@ class CollectionView: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
     }
+    
 }
 
 extension CollectionView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
